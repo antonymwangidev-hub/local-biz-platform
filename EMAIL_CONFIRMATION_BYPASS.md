@@ -3,6 +3,7 @@
 ## What Changed
 
 The login system has been updated to **skip email confirmation** during sign-up. Users can now:
+
 1. Create an account with email/password
 2. **Immediately access the app** (no email verification needed)
 3. Sign in right away without checking their inbox
@@ -44,12 +45,14 @@ If the above doesn't exist, use this method:
 ### File: `src/hooks/useAuth.tsx`
 
 Updated the `signUp()` function to:
+
 - ✅ Create user account
 - ✅ Automatically confirm email (skip verification)
 - ✅ Assign user role
 - ✅ User can immediately log in
 
 ### Before:
+
 ```tsx
 const signUp = async (...) => {
   const { data, error } = await supabase.auth.signUp({...});
@@ -61,6 +64,7 @@ const signUp = async (...) => {
 ```
 
 ### After:
+
 ```tsx
 const signUp = async (...) => {
   const { data, error } = await supabase.auth.signUp({...});
@@ -68,7 +72,7 @@ const signUp = async (...) => {
   if (data.user) {
     // Create user role
     await supabase.from("user_roles").insert({ user_id: data.user.id, role });
-    
+
     // Auto-confirm user email (skip email verification)
     const { error: confirmError } = await supabase.auth.admin.updateUserById(data.user.id, {
       email_confirm: true,
@@ -115,28 +119,31 @@ const signUp = async (...) => {
 ## 📊 Comparison
 
 ### Before (Email Verification Required):
-| Step | Action | Time |
-|------|--------|------|
-| 1 | User fills signup form | Immediate |
-| 2 | Clicks "Create Account" | Immediate |
-| 3 | User must check email | 5-30 min wait ⏳ |
-| 4 | User clicks confirmation link | 1 min |
-| 5 | User manually signs in | 1 min |
-| **Total Time** | | **7-35 minutes** ⏱️ |
+
+| Step           | Action                        | Time                |
+| -------------- | ----------------------------- | ------------------- |
+| 1              | User fills signup form        | Immediate           |
+| 2              | Clicks "Create Account"       | Immediate           |
+| 3              | User must check email         | 5-30 min wait ⏳    |
+| 4              | User clicks confirmation link | 1 min               |
+| 5              | User manually signs in        | 1 min               |
+| **Total Time** |                               | **7-35 minutes** ⏱️ |
 
 ### After (No Email Verification):
-| Step | Action | Time |
-|------|--------|------|
-| 1 | User fills signup form | Immediate |
-| 2 | Clicks "Create Account" | Immediate |
-| 3 | Auto-confirmed & logged in | Instant ✅ |
-| **Total Time** | | **Under 1 minute** ⚡ |
+
+| Step           | Action                     | Time                  |
+| -------------- | -------------------------- | --------------------- |
+| 1              | User fills signup form     | Immediate             |
+| 2              | Clicks "Create Account"    | Immediate             |
+| 3              | Auto-confirmed & logged in | Instant ✅            |
+| **Total Time** |                            | **Under 1 minute** ⚡ |
 
 ---
 
 ## ✅ Testing the New Flow
 
 ### Test Case 1: Email/Password Sign-Up
+
 1. Go to `http://localhost:8080/auth`
 2. Switch to "Create account" mode
 3. Fill in details:
@@ -149,12 +156,14 @@ const signUp = async (...) => {
 6. ✅ NO email confirmation needed!
 
 ### Test Case 2: Immediate Login
+
 1. New account should be ready to use
 2. Log out if auto-logged in
 3. Try signing in with same email/password
 4. ✅ Should log in successfully
 
 ### Test Case 3: Google Sign-In (Still Works)
+
 1. Click "Continue with Google"
 2. Google auth should work as before
 3. ✅ Auto-logged in as always
@@ -164,6 +173,7 @@ const signUp = async (...) => {
 ## 🔐 Security Considerations
 
 ### ✅ Still Secure Because:
+
 - Passwords are hashed and salted
 - User email is validated during sign-up
 - Session tokens are secure (JWT)
@@ -171,11 +181,13 @@ const signUp = async (...) => {
 - Rate limiting still applies
 
 ### ⚠️ Trade-offs:
+
 - Users might use invalid emails (minor - auto-corrected with first password reset)
 - More spam accounts possible (but manageable with admin controls)
 - No email bounce detection initially (detects on first email sent)
 
 ### 💡 Recommendations:
+
 - Keep email verification for business/enterprise accounts
 - Use this for standard customer accounts
 - Monitor for spam signups (Supabase logs)
@@ -214,6 +226,7 @@ If you want to revert back to requiring email confirmation:
 ## 🚀 What's Live on GitHub
 
 Latest commit includes:
+
 - ✅ Updated `useAuth.tsx` with auto-confirm
 - ✅ This documentation
 - ✅ Ready for testing on live demo
@@ -225,6 +238,7 @@ Latest commit includes:
 ## 📞 Need Help?
 
 Check these files:
+
 - `src/hooks/useAuth.tsx` - Auth logic
 - `src/pages/Auth.tsx` - Sign-up form UI
 - `src/pages/AuthCallback.tsx` - OAuth callback

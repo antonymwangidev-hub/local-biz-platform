@@ -39,12 +39,12 @@
 
 ### What Changed:
 
-| File | Changes | Impact |
-|------|---------|--------|
-| `src/App.tsx` | Added `/auth/callback` route | ✅ Routes OAuth callbacks |
-| `src/pages/Auth.tsx` | Added Google button + handler | ✅ Users can click Google sign-in |
-| `src/hooks/useAuth.tsx` | Added `signInWithGoogle()` | ✅ Centralized OAuth logic |
-| `src/pages/AuthCallback.tsx` | NEW | ✅ Handles OAuth redirect |
+| File                         | Changes                       | Impact                            |
+| ---------------------------- | ----------------------------- | --------------------------------- |
+| `src/App.tsx`                | Added `/auth/callback` route  | ✅ Routes OAuth callbacks         |
+| `src/pages/Auth.tsx`         | Added Google button + handler | ✅ Users can click Google sign-in |
+| `src/hooks/useAuth.tsx`      | Added `signInWithGoogle()`    | ✅ Centralized OAuth logic        |
+| `src/pages/AuthCallback.tsx` | NEW                           | ✅ Handles OAuth redirect         |
 
 ### What's Automatic:
 
@@ -59,6 +59,7 @@
 ## 🚀 Getting Started (3-Step Guide)
 
 ### Step 1️⃣: Google Cloud Setup (10 minutes)
+
 1. Open [Google Cloud Console](https://console.cloud.google.com/)
 2. Create new project: "LocalBiz Connect"
 3. Enable Google+ API
@@ -67,6 +68,7 @@
 6. Copy **Client ID** and **Client Secret**
 
 ### Step 2️⃣: Supabase Configuration (5 minutes)
+
 1. Go to [Supabase Dashboard](https://app.supabase.com)
 2. Select your project
 3. Auth → Providers → Google (Enable)
@@ -74,6 +76,7 @@
 5. Save
 
 ### Step 3️⃣: Test It! (1 minute)
+
 1. Run: `npm run dev`
 2. Visit: `http://localhost:8080/auth`
 3. Click: "Continue with Google"
@@ -194,6 +197,7 @@ Documentation/
 ## 🔐 Security Checklist
 
 ✅ **What's Secure:**
+
 - Client Secret never exposed in frontend code
 - All OAuth exchanges on backend (Supabase)
 - Sessions encrypted with JWT
@@ -201,6 +205,7 @@ Documentation/
 - Auto token refresh prevents expiry
 
 ⚠️ **What You Must Do:**
+
 - Keep Google Client Secret safe (don't share)
 - Never commit `.env` with real secrets
 - Use environment variables in production
@@ -226,6 +231,7 @@ Documentation/
 → Check Supabase Auth logs for errors
 
 ### Documentation Files:
+
 - 📖 `GOOGLE_SIGNIN_SETUP.md` - Full setup guide + troubleshooting
 - 📘 `GOOGLE_SIGNIN_ENABLED.md` - Implementation details
 - 📗 `GOOGLE_SIGNIN_QUICK_START.md` - Quick reference
@@ -235,16 +241,19 @@ Documentation/
 ## 🎯 Next Actions
 
 ### Immediate (Today):
+
 1. Get Google OAuth credentials
 2. Configure in Supabase
 3. Test with `npm run dev`
 
 ### Soon:
+
 - Deploy to production
 - Update redirect URLs for production domain
 - Add additional OAuth providers (GitHub, etc.)
 
 ### Later:
+
 - Add profile picture sync from Google
 - Add GitHub OAuth
 - Add Apple sign-in

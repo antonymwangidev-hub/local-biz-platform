@@ -3,6 +3,7 @@
 This guide will help you enable Google OAuth authentication for your LocalBiz Connect platform.
 
 ## Prerequisites
+
 - Supabase project already set up
 - Google Cloud Project (or create one)
 - Administrative access to your Supabase dashboard
@@ -77,9 +78,11 @@ This guide will help you enable Google OAuth authentication for your LocalBiz Co
 ⚠️ **Important**: You need to add your production domain to Google OAuth later.
 
 For now, if testing locally:
+
 - Local testing URL: `http://localhost:8080/auth/v1/callback`
 
 To add more URLs later:
+
 1. Return to Google Cloud Console → **Credentials**
 2. Click your OAuth 2.0 Web Client ID
 3. Add additional authorized redirect URIs:
@@ -92,6 +95,7 @@ To add more URLs later:
 ## Step 6: Test Google Sign-In
 
 1. Start your development server:
+
    ```bash
    npm run dev
    ```
@@ -111,19 +115,22 @@ To add more URLs later:
 ## Troubleshooting
 
 ### Error: "redirect_uri_mismatch"
+
 - **Cause**: The redirect URL in your request doesn't match any authorized URLs in Google Cloud Console
-- **Solution**: 
+- **Solution**:
   1. Check the exact URL format in the error message
   2. Add it to Google Cloud Console → Credentials → Your OAuth Client ID
   3. Make sure there are no extra spaces or typos
 
 ### Error: "The OAuth client was not found"
+
 - **Cause**: Client ID is incorrect or not properly configured in Supabase
-- **Solution**: 
+- **Solution**:
   1. Double-check the Client ID copied from Google Cloud Console
   2. Verify it's saved correctly in Supabase Authentication → Providers
 
 ### Blank page after clicking "Continue with Google"
+
 - **Cause**: Usually a redirect URL issue
 - **Solution**:
   1. Open browser DevTools (F12)
@@ -132,6 +139,7 @@ To add more URLs later:
   4. Verify the Supabase URL matches your project URL
 
 ### "Invalid Client" Error
+
 - **Cause**: Client Secret is incorrect or expired
 - **Solution**:
   1. Go to Google Cloud Console → Credentials
@@ -144,6 +152,7 @@ To add more URLs later:
 ## Your Current Setup Info
 
 Your Supabase Project:
+
 - **Project ID**: dyrplbjiuuqpptjcenaf
 - **Supabase URL**: https://dyrplbjiuuqpptjcenaf.supabase.co
 - **Redirect URI**: https://dyrplbjiuuqpptjcenaf.supabase.co/auth/v1/callback

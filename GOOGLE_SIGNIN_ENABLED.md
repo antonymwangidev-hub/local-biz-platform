@@ -61,6 +61,7 @@ Your LocalBiz Connect application now has a complete Google OAuth 2.0 authentica
 ### Step 3: Test Locally
 
 1. Start dev server:
+
    ```bash
    npm run dev
    ```
@@ -174,20 +175,24 @@ When deploying to production:
 ## Troubleshooting
 
 ### ❌ "redirect_uri_mismatch" Error
+
 - Check that redirect URI in Google Cloud Console exactly matches:
   `https://dyrplbjiuuqpptjcenaf.supabase.co/auth/v1/callback`
 - No trailing slashes, exact match required
 
 ### ❌ Blank page after Google sign-in
+
 - Open DevTools (F12) → Console tab
 - Check for JavaScript errors
 - Verify Supabase credentials in `.env` are correct
 
 ### ❌ "The OAuth client was not found"
+
 - Client ID is incorrect or not saved in Supabase
 - Verify in Supabase → Authentication → Providers → Google
 
 ### ❌ User not found after sign-in
+
 - Check Supabase Auth logs for errors
 - Ensure `user_roles` table has proper permissions
 - Check that migration has been applied
@@ -216,10 +221,7 @@ export function MyComponent() {
   const { signInWithGoogle, user, loading } = useAuth();
 
   return (
-    <button 
-      onClick={signInWithGoogle}
-      disabled={loading}
-    >
+    <button onClick={signInWithGoogle} disabled={loading}>
       Sign in with Google
     </button>
   );
@@ -252,6 +254,7 @@ if (role === "business") {
 ## Security Notes
 
 ✅ **What's Protected:**
+
 - Client Secret never exposed to frontend
 - Supabase handles OAuth flow securely
 - Sessions encrypted in localStorage
@@ -259,6 +262,7 @@ if (role === "business") {
 - Auto token refresh
 
 ⚠️ **What You Should Do:**
+
 - Keep Google Client Secret safe
 - Never commit `.env` with real secrets
 - Enable 2FA on Google Cloud account

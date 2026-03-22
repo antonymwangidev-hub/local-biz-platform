@@ -5,6 +5,7 @@
 Your LocalBiz Connect app now has a **complete Google OAuth 2.0 authentication system** ready to use!
 
 ### Features Enabled:
+
 - ✅ Google Sign-In button on authentication page
 - ✅ OAuth 2.0 flow with Supabase
 - ✅ Automatic user profile creation
@@ -18,6 +19,7 @@ Your LocalBiz Connect app now has a **complete Google OAuth 2.0 authentication s
 ## 🚀 To Get Started (3 Steps)
 
 ### Step 1: Get Google OAuth Credentials
+
 1. Go to [Google Cloud Console](https://console.cloud.google.com/)
 2. Create a project named "LocalBiz Connect"
 3. Enable Google+ API
@@ -26,6 +28,7 @@ Your LocalBiz Connect app now has a **complete Google OAuth 2.0 authentication s
 6. Copy **Client ID** and **Client Secret**
 
 ### Step 2: Configure Supabase
+
 1. Go to [Supabase Dashboard](https://app.supabase.com)
 2. Select your project
 3. Go to **Authentication** → **Providers**
@@ -34,6 +37,7 @@ Your LocalBiz Connect app now has a **complete Google OAuth 2.0 authentication s
 6. Click **Save**
 
 ### Step 3: Test It
+
 1. Run: `npm run dev`
 2. Go to `http://localhost:8080/auth`
 3. Click **"Continue with Google"**
@@ -45,11 +49,13 @@ Your LocalBiz Connect app now has a **complete Google OAuth 2.0 authentication s
 ## 📁 Files Changed
 
 ### New Files:
+
 - `src/pages/AuthCallback.tsx` - Handles OAuth callbacks
 - `GOOGLE_SIGNIN_SETUP.md` - Detailed setup guide
 - `GOOGLE_SIGNIN_ENABLED.md` - Implementation overview
 
 ### Modified Files:
+
 - `src/App.tsx` - Added `/auth/callback` route
 - `src/pages/Auth.tsx` - Enhanced with Google button
 - `src/hooks/useAuth.tsx` - Added `signInWithGoogle()` function
@@ -59,10 +65,12 @@ Your LocalBiz Connect app now has a **complete Google OAuth 2.0 authentication s
 ## 🔍 Key Improvements
 
 ### Before:
+
 - Email/password auth only
 - Manual sign-up process required
 
 ### After:
+
 - 🟢 Google OAuth sign-in available
 - 🟢 One-click sign-in with Google
 - 🟢 Profile auto-sync from Google
@@ -84,10 +92,7 @@ function MyComponent() {
 
   if (!user) {
     return (
-      <button 
-        onClick={signInWithGoogle}
-        disabled={loading}
-      >
+      <button onClick={signInWithGoogle} disabled={loading}>
         {loading ? "Signing in..." : "Sign in with Google"}
       </button>
     );
@@ -102,6 +107,7 @@ function MyComponent() {
 ## 🔐 Security Features
 
 ✅ **Implemented:**
+
 - Client Secret never exposed to frontend
 - Secure OAuth 2.0 flow
 - Token auto-refresh
@@ -112,13 +118,13 @@ function MyComponent() {
 
 ## 📊 Current Status
 
-| Component | Status | Notes |
-|-----------|--------|-------|
-| Google OAuth Setup | ⏳ Pending | Need Google credentials |
-| Code Implementation | ✅ Complete | Ready to use |
-| Supabase Integration | ✅ Complete | Just needs Google creds |
-| Testing | ⏳ Pending | Test after Google setup |
-| Deployment | ⏳ Ready | Update domain URLs later |
+| Component            | Status      | Notes                    |
+| -------------------- | ----------- | ------------------------ |
+| Google OAuth Setup   | ⏳ Pending  | Need Google credentials  |
+| Code Implementation  | ✅ Complete | Ready to use             |
+| Supabase Integration | ✅ Complete | Just needs Google creds  |
+| Testing              | ⏳ Pending  | Test after Google setup  |
+| Deployment           | ⏳ Ready    | Update domain URLs later |
 
 ---
 

@@ -96,7 +96,17 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     });
     if (error) throw error;
     if (data.user) {
+      // Create user role
       await supabase.from("user_roles").insert({ user_id: data.user.id, role });
+      
+      // Auto-confirm user email (skip email verification)
+      const { error: confirmError } = await supabase.auth.admin.updateUserById(data.user.id, {
+        email_confirm: true,
+      });
+      
+      if (confirmError) {
+        console.warn("Could not auto-confirm email:", confirmError);
+      }
     }
   };
 

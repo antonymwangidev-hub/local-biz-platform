@@ -53,9 +53,13 @@ const Auth = () => {
       } else {
         await signUp(email, password, fullName, role);
         toast({
-          title: "Account created!",
-          description: "Check your email to confirm your account.",
+          title: "Account created successfully! 🎉",
+          description: "Welcome to LocalBiz Connect! Redirecting to your feed...",
         });
+        // Auto-redirect to feed after successful sign-up
+        setTimeout(() => {
+          navigate("/feed");
+        }, 1500);
       }
     } catch (err: any) {
       toast({

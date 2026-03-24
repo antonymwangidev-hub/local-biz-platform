@@ -12,7 +12,7 @@ LocalBiz Connect 2.0 is a **unique full-stack web platform** designed for local 
 
 The platform is fully **responsive, secure, and demo-ready**, built for deployment on **Lovable Cloud**.
 
-Live Demo: https://local-biz-platform.lovable.app
+Live Demo: https://local-biz-254.lovable.app
 ---
 
 ## **Key Features**
